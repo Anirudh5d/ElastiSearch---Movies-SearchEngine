@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/backgroundsearch.jpg');
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed; 
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); 
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .search-bar button[type="submit"] {
+            padding: 8px 16px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-bar button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .movie {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .movie-info {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .movie-info li {
+            margin-bottom: 10px;
+        }
+        .movie-info li:nth-child(even) {
+            color: #888;
+        }
+        .movie-info li strong {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        <div class="search-bar">
+            <form action="/search" method="post">
+                <input type="text" name="query" placeholder="Refine search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        {% for movie in movies %}
+            <div class="movie">
+                <ul class="movie-info">
+                    <li><strong>Movie Name:</strong> {{ movie.movie_name }}</li>
+                    <li><strong>Runtime:</strong> {{ movie.runtime }}</li>
+                    <li><strong>Genre:</strong> {{ movie.genre }}</li>
+                    <li><strong>Director:</strong> {{ movie.director }}</li>
+                    <li><strong>Year:</strong> {{ movie.year }}</li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
