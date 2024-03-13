@@ -1,0 +1,4 @@
+elasticsearch == 9.9.2
+tkinter == 3.10.8
+flask == 3.0.2
+pandas == 2.2.1
